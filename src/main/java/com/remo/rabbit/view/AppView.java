@@ -1,10 +1,13 @@
-package view;
+package com.remo.rabbit.view;
+
+import org.springframework.stereotype.Component;
 
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
 import javax.swing.text.Caret;
 import java.awt.*;
 
+@Component
 public class AppView extends JFrame {
     private JLabel messageLabel;
     private JButton clickButton;

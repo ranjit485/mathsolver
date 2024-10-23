@@ -1,5 +1,8 @@
-package model;
+package com.remo.rabbit.model;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class AppModel {
     private String message;
 
