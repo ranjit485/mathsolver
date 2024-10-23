@@ -34,7 +34,7 @@ public class AppView extends JFrame {
 
         inputArea = new JTextArea(19, 23);
         inputArea.setBounds(10, 30, 200, 200);
-        inputArea.setBorder(BorderFactory.createLineBorder(new Color(187, 134, 252), 1));
+//        inputArea.setBorder(BorderFactory.createLineBorder(new Color(187, 134, 252), 1));
         inputArea.setBackground(new Color(18, 40, 64));
         inputArea.setForeground(Color.WHITE);
         inputArea.setLineWrap(true);
@@ -59,6 +59,8 @@ public class AppView extends JFrame {
         JButton solveButton = new JButton("Solve");
         solveButton.setBackground(new Color(255, 101, 0));
         solveButton.setOpaque(true);
+        solveButton.setFont(new Font("Arial",Font.PLAIN,20));
+        solveButton.setForeground(Color.WHITE);
         solveButton.setBorderPainted(false);
 
         // Add components to inputContainer
