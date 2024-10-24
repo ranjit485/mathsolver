@@ -74,15 +74,8 @@ public class LeftSide {
         // Add components to inputContainer
         creditContainer = new JPanel();
         creditContainer.setBackground(new Color(14, 30, 52));
-        creditContainer.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));  // FlowLayout with 10px gaps between images
+        creditContainer.setLayout(new FlowLayout(FlowLayout.CENTER, 100, 10));  // FlowLayout with 10px gaps between images
 
-        String[] imagePaths = {"src/main/resources/ys.png", "src/main/resources/ys.png","src/main/resources/ys.png", "src/main/resources/ys.png", "src/main/resources/ys.png"};
-
-        for (String imagePath : imagePaths) {
-            ImageIcon icon = new ImageIcon(new ImageIcon(imagePath).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH));
-            JLabel imageLabel = new JLabel(icon);
-            creditContainer.add(imageLabel);
-        }
 
         buttonContainer =new JPanel();
         buttonContainer.setBackground(Color.WHITE);

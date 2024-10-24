@@ -2,51 +2,52 @@ package com.remo.rabbit.view;
 
 import org.springframework.stereotype.Component;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
 @Component
 public class RightSide {
     private JPanel rightPannel;
-
     private JPanel imageContainer;
     private JTextArea responseText;
     private JLabel aiImage;
-    RightSide(){
-
-        rightPannel = new JPanel();
-        rightPannel.setBackground(Color.WHITE);
-        rightPannel.setBounds(10,10,100,300);
-        rightPannel.setLayout(new BorderLayout());
-        rightPannel.setSize(200, 400);
+    private Icon icon;
+    public RightSide() throws IOException {
+        // Create the main panel
+        rightPannel = new JPanel(new BorderLayout());
         rightPannel.setBackground(new Color(11, 25, 44));
+        rightPannel.setPreferredSize(new Dimension(200, 400)); // Optional, for controlling panel size
 
-        imageContainer = new JPanel();
-        imageContainer.setBackground(Color.WHITE);
-        imageContainer.setBounds(0,0,100,100);
-        imageContainer.setLayout(new BorderLayout());
-        imageContainer.setSize(200, 400);
-        imageContainer.setBackground(new Color(186, 212, 248));
+        // Create the image container panel
+        imageContainer = new JPanel(new BorderLayout());
+        imageContainer.setPreferredSize(new Dimension(100, 120));
 
-        ImageIcon icon = new ImageIcon(new ImageIcon("src/main/resources/ys.png").getImage().getScaledInstance(80, 80, Image.SCALE_SMOOTH));
+        icon = new ImageIcon("src/main/resources/ail.gif");
         aiImage = new JLabel(icon);
 
-        imageContainer.add(aiImage);
 
-        responseText = new JTextArea("Ai response answer Ai response answer Ai response answer Ai response answer Ai response answer ");
-        responseText.setBounds(10, 30, 50, 200);
+        imageContainer.add(aiImage, BorderLayout.CENTER);
+
+        // Create the text area for AI response
+        responseText = new JTextArea("Ai response answer Ai response answer Ai response answer...");
         responseText.setBackground(new Color(18, 40, 64));
         responseText.setForeground(Color.WHITE);
         responseText.setLineWrap(true);
         responseText.setWrapStyleWord(true);
-        responseText.setFont(new Font("Arial", Font.PLAIN, 16));  // Set font to Arial, plain style, size 16
+        responseText.setFont(new Font("Arial", Font.PLAIN, 16));
 
+        // Add a scroll pane to the text area
         JScrollPane scrollPaneTwo = new JScrollPane(responseText);
         scrollPaneTwo.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         scrollPaneTwo.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
-        rightPannel.add(aiImage,BorderLayout.PAGE_START);
-        rightPannel.add(scrollPaneTwo, BorderLayout.CENTER);
-
+        // Add components to the main panel
+        rightPannel.add(imageContainer, BorderLayout.NORTH);  // Add image at the top
+        rightPannel.add(scrollPaneTwo, BorderLayout.CENTER);   // Add text area below the image
     }
 
     public JPanel getRightPannel() {
