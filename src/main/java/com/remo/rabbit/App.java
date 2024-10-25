@@ -7,6 +7,12 @@ import org.springframework.context
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class App {
+
+    static ApplicationContext context;
+
+    public static ApplicationContext getContext() {
+        return context;
+    }
     public static void main(String[] args) {
 
         ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);

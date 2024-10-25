@@ -19,7 +19,7 @@ public class AppView extends JFrame {
     public AppView(LeftSide leftSide,RightSide rightSide) {
 
         // Set up the window
-        setTitle("Math Solver - Developed By Rohan Gharge");
+        setTitle("Math Solver");
         setSize(950, 700);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         getContentPane().setBackground(new Color(18, 18, 18));
@@ -32,6 +32,7 @@ public class AppView extends JFrame {
         // Add containers to the frame
         add(leftSide.getLeftPannel());
         add(rightSide.getRightPannel());
+
 
     }
 
