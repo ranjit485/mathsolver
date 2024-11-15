@@ -1,16 +1,13 @@
 package com.remo.rabbit.model;
 
-import org.springframework.stereotype.Component;
-
-@Component
 public class AppModel {
-    private String message;
+    public static String MY_API_KEY;
 
-    public AppModel() {
-        this.message = "Hello, World!";
+    public static String getMyApiKey() {
+        return MY_API_KEY;
     }
 
-    public String getMessage() {
-        return message;
+    public static void setMyApiKey(String myApiKey) {
+        MY_API_KEY = myApiKey;
     }
 }

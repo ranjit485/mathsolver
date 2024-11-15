@@ -1,0 +1,29 @@
+Here are some example inputs and outputs for the AI-based Offline Math Solver (OLMA) using the Symja library.
+
+Example 1: Basic Arithmetic
+Input: "3 + 5 * 2"
+Output: "13"
+
+Example 2: Solving an Equation
+Input: "Solve(x^2 - 4 = 0, x)"
+Output: "{x -> -2, x -> 2}"
+
+Example 3: Calculus (Integration)
+Input: "Integrate(x^2, x)"
+Output: "1/3 * x^3"
+
+Example 4: Derivative
+Input: "D(sin(x), x)"
+Output: "cos(x)"
+
+Example 5: Simplification
+Input: "Simplify((x^2 + 2*x + 1) / (x + 1))"
+Output: "x + 1"
+
+Example 6: Matrix Multiplication
+Input: "{{1, 2}, {3, 4}} . {{2, 0}, {1, 2}}"
+Output: {{4, 4}, {10, 8}}
+
+Example 7: Solving for Variable in a System of Equations
+Input: "Solve({x + y = 10, x - y = 2}, {x, y})"
+Output: "{x -> 6, y -> 4}"

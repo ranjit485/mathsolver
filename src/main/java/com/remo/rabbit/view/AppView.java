@@ -4,9 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
-import javax.swing.border.MatteBorder;
-import javax.swing.text.Caret;
 import java.awt.*;
 
 @Component
@@ -14,11 +11,10 @@ public class AppView extends JFrame {
 
     public LeftSide leftSide;
     public  RightSide rightSide;
-
    @Autowired
-    public AppView(LeftSide leftSide,RightSide rightSide) {
+    public AppView(LeftSide leftSide, RightSide rightSide) {
 
-        // Set up the window
+       // Set up the window
         setTitle("Math Solver");
         setSize(950, 700);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -32,7 +28,6 @@ public class AppView extends JFrame {
         // Add containers to the frame
         add(leftSide.getLeftPannel());
         add(rightSide.getRightPannel());
-
 
     }
 

@@ -1,65 +1,56 @@
 package com.remo.rabbit.service;
 
-import okhttp3.*;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.remo.rabbit.model.AppModel;
+import com.theokanning.openai.completion.chat.ChatCompletionRequest;
+import com.theokanning.openai.completion.chat.ChatCompletionResult;
+import com.theokanning.openai.completion.chat.ChatMessage;
+import com.theokanning.openai.completion.chat.ChatMessageRole;
+import com.theokanning.openai.service.OpenAiService;
+import okhttp3.*;
+import org.springframework.stereotype.Service;
+
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.List;
+import java.util.Map;
+
+import static com.remo.rabbit.model.AppModel.MY_API_KEY;
+import static com.theokanning.openai.utils.TikTokensUtil.ModelEnum.*;
 
 @Service
 public class OpenAIService {
 
-    private static final String OPENAI_API_URL = "https://api.openai.com/v1/chat/completions";
-    
-    @Value("${openai.api.key}")
-    private String apiKey;
-
-    private final OkHttpClient client;
-    private final ObjectMapper objectMapper;
+//    private final String apiKey = "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";
+    private final OpenAiService service;
 
     public OpenAIService() {
-        this.client = new OkHttpClient();
-        this.objectMapper = new ObjectMapper();
+        this.service = new OpenAiService(MY_API_KEY);
     }
+    public String solveMathProblem(String userMessage) {
+        // Define the system prompt
+        List<ChatMessage> messages = new ArrayList<>();
+        messages.add(new ChatMessage(ChatMessageRole.SYSTEM.value(), "You are a helpful assistant."));
 
-    public String solveMathProblem(String userMessage) throws IOException {
-        // Define the system prompt to set context for the assistant
-        Map<String, Object> systemPrompt = new HashMap<>();
-        systemPrompt.put("role", "system");
-        systemPrompt.put("content", "You are an AI math solver. Solve mathematical expressions and equations accurately and explain the steps if needed.");
+        // Add the user's message
+        messages.add(new ChatMessage(ChatMessageRole.USER.value(), userMessage));
 
-        // Define the user message to be sent
-        Map<String, String> userPrompt = new HashMap<>();
-        userPrompt.put("role", "user");
-        userPrompt.put("content", userMessage);
-
-        Map<String, Object> messageContent = new HashMap<>();
-        messageContent.put("model", "gpt-3.5-turbo");
-        messageContent.put("messages", List.of(systemPrompt, userPrompt));
-
-        RequestBody body = RequestBody.create(
-                objectMapper.writeValueAsString(messageContent),
-                MediaType.get("application/json")
-        );
-
-        Request request = new Request.Builder()
-                .url(OPENAI_API_URL)
-                .header("Authorization", "Bearer " + apiKey)
-                .post(body)
+        // Build the chat request
+        ChatCompletionRequest chatCompletionRequest = ChatCompletionRequest.builder()
+                .model(GPT_3_5_TURBO.getName())
+                .messages(messages)
                 .build();
 
-        try (Response response = client.newCall(request).execute()) {
-            if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
-
-            // Parse the response
-            Map<String, Object> jsonResponse = objectMapper.readValue(response.body().string(), Map.class);
-            Map<String, Object> choice = ((List<Map<String, Object>>) jsonResponse.get("choices")).get(0);
-            Map<String, Object> message = (Map<String, Object>) choice.get("message");
-
-            return (String) message.get("content");
+        // Call the OpenAI API and retrieve the response
+        try {
+            ChatCompletionResult result = service.createChatCompletion(chatCompletionRequest);
+            ChatMessage responseMessage = result.getChoices().get(0).getMessage();
+            return responseMessage.getContent();
+        } catch (Exception e) {
+            // Handle API or network errors
+            return "An error occurred: " + e.getMessage();
         }
     }
+
 }
