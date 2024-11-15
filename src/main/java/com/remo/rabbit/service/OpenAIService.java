@@ -22,7 +22,6 @@ import static com.theokanning.openai.utils.TikTokensUtil.ModelEnum.*;
 @Service
 public class OpenAIService {
 
-//    private final String apiKey = "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";
     private final OpenAiService service;
 
     public OpenAIService() {
