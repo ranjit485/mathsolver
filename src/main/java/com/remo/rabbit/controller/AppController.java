@@ -3,6 +3,7 @@ package com.remo.rabbit.controller;
 import com.remo.rabbit.service.OpenAIService;
 import com.remo.rabbit.view.LeftSide;
 import com.remo.rabbit.view.RightSide;
+import org.matheclipse.core.expression.S;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -23,7 +24,6 @@ public class AppController {
             String userInput = leftSide.getQuestionInput().getText();
 
             JTextArea responseText = rightSide.getResponseText();
-
 
             responseText.setText(openAIService.solveMathProblem(userInput));
 

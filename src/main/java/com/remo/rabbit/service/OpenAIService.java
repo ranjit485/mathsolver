@@ -1,31 +1,26 @@
 package com.remo.rabbit.service;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.remo.rabbit.model.AppModel;
+
 import com.theokanning.openai.completion.chat.ChatCompletionRequest;
 import com.theokanning.openai.completion.chat.ChatCompletionResult;
 import com.theokanning.openai.completion.chat.ChatMessage;
 import com.theokanning.openai.completion.chat.ChatMessageRole;
 import com.theokanning.openai.service.OpenAiService;
-import okhttp3.*;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import static com.remo.rabbit.model.AppModel.MY_API_KEY;
 import static com.theokanning.openai.utils.TikTokensUtil.ModelEnum.*;
 
 @Service
 public class OpenAIService {
-
+    String key ="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";
     private final OpenAiService service;
 
     public OpenAIService() {
-        this.service = new OpenAiService(MY_API_KEY);
+        this.service = new OpenAiService(key);
+//        this.service = new OpenAiService(MY_API_KEY);
     }
     public String solveMathProblem(String userMessage) {
         // Define the system prompt
