@@ -23,9 +23,11 @@ import static com.theokanning.openai.utils.TikTokensUtil.ModelEnum.*;
 public class OpenAIService {
 
     private final OpenAiService service;
+    String MY_KEY ="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";
+
 
     public OpenAIService() {
-        this.service = new OpenAiService(MY_API_KEY);
+        this.service = new OpenAiService(MY_KEY);
     }
     public String solveMathProblem(String userMessage) {
         // Define the system prompt
