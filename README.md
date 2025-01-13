@@ -1,4 +1,3 @@
-
 # AI-Based Math Solver
 
 This desktop application uses **Swing** for the UI, **Spring** for backend integration, and the **Ollama AI model** for solving complex math problems.
@@ -17,24 +16,8 @@ This desktop application uses **Swing** for the UI, **Spring** for backend integ
 
 ## Prerequisites
 Before you run the application, make sure you have the following installed:
-- Java 8 or higher
-- Spring Framework
-- Download ollama for windows from here >> https://github.com/ollama/ollama
-
-## Setup and Installation
-
-1. **Clone the Repository**:
-   ```bash
-   git clone https://github.com/ranjit485/mathsolver/
-   ```
-
-2. **Import the project into your IDE**:
-   - Open the project in your preferred IDE (e.g., IntelliJ IDEA or Eclipse).
-   - If using IntelliJ, select "Open Project" and choose the project folder.
-   - If using Eclipse, import as a Maven project.
-
-3. **Build and Run the Application**:
-   - Run the `App.java` class to start the application.
+- Step 1 Download Ollama for Windows from [here](https://ollama.com/download/OllamaSetup.exe)
+- Step 2 Download Math Solver for Windows from here [Download MathSolver.exe](https://github.com/ranjit485/mathsolver/releases/download/untagged-04bc83ab9825d2720f6d/MathSolver.exe)
 
 ## Usage
 1. Open the application.
