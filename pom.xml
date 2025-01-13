@@ -35,31 +35,6 @@
       <version>2.17.2</version>
     </dependency>
 
-    <dependency>
-      <groupId>org.matheclipse</groupId>
-      <artifactId>matheclipse-core</artifactId>
-      <version>3.0.0</version>
-    </dependency>
-
-    <dependency>
-      <groupId>com.theokanning.openai-gpt3-java</groupId>
-      <artifactId>service</artifactId>
-      <version>0.18.2</version>
-    </dependency>
-
-    <dependency>
-      <groupId>com.theokanning.openai-gpt3-java</groupId>
-      <artifactId>api</artifactId>
-      <version>0.18.2</version>
-    </dependency>
-
-    <dependency>
-      <groupId>com.theokanning.openai-gpt3-java</groupId>
-      <artifactId>client</artifactId>
-      <version>0.18.2</version>
-    </dependency>
-
-
     <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
