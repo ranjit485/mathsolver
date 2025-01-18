@@ -9,42 +9,37 @@ import java.awt.*;
 @Component
 public class ResponsePannel {
     private JPanel responsePannel;
-
     private JTextArea responseText;
     private JLabel aiImage;
+
     @Autowired
     public ResponsePannel() {
-        // Create the main panel
+        // Main panel with a modern background
         responsePannel = new JPanel(new BorderLayout());
-        responsePannel.setBackground(new Color(11, 25, 44));
-        responsePannel.setBounds(new Rectangle(200,600));
+        responsePannel.setBackground(new Color(18, 20, 28)); // Darker background for the response panel
 
-
-        // Create the text area for AI response
+        // Create the text area for AI response with modern styling
         responseText = new JTextArea();
         responseText.setEnabled(false);
-        responseText.setText("I am " +
-                "-------------------" +
-                "" +
-                "AI Math Solver" +
-                "" +
-                "" +
-                "-------------------");
-        responseText.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));  // Padding around components
-        responseText.setBackground(new Color(233,235,237));
-        responseText.setForeground(Color.BLACK);
+        responseText.setText("\n\n\n                          A I   M A T H          \n" +
+                "                           S O L V E R            \n" +
+                "                     Developed by: Rohan, Rushi, Abhi, Akansh \n");
+        responseText.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));  // Padding
+        responseText.setBackground(new Color(32, 36, 45)); // Darker background for text area
+        responseText.setForeground(Color.WHITE); // White text for contrast
+        responseText.setFont(new Font("Segoe UI", Font.PLAIN, 20)); // Modern font
         responseText.setLineWrap(true);
-        responseText.setBounds(10, 30, 200, 200);
         responseText.setWrapStyleWord(true);
-        responseText.setFont(new Font("Arial", Font.PLAIN, 26));
 
-        // Add a scroll pane to the text area
+        // Scroll Pane for the response text area
         JScrollPane scrollPaneTwo = new JScrollPane(responseText);
         scrollPaneTwo.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         scrollPaneTwo.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
-        // Add components to the main panel
+        // Adding components to the response panel
         responsePannel.add(scrollPaneTwo, BorderLayout.CENTER);
+
+        // Optional: You can add an image for AI branding here, styled as needed.
     }
 
     public JPanel getResponsePannel() {

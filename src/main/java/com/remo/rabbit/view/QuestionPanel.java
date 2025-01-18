@@ -3,7 +3,6 @@ package com.remo.rabbit.view;
 import org.springframework.stereotype.Component;
 
 import javax.swing.*;
-import javax.swing.text.Caret;
 import java.awt.*;
 
 @Component
@@ -13,70 +12,64 @@ public class QuestionPanel {
     private JTextArea questionInput;
     private JPanel questionPanel;
     private JPanel buttonContainer;
+
     public QuestionPanel() {
-
+        // Main panel styling
         questionPanel = new JPanel();
-        questionPanel.setSize(200, 700);
-//        questionPannel.setBorder(new MatteBorder(0, 0, 0, 0, new Color(186, 212, 248)));
-        questionPanel.setBackground(new Color(188,204,215));
+        questionPanel.setBackground(new Color(41, 45, 62)); // Dark background for the question panel
         questionPanel.setLayout(new BoxLayout(questionPanel, BoxLayout.Y_AXIS));
-//        leftPannel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));  // Padding around components
 
-
-        questionInput = new JTextArea(26, 23);
-        questionInput.setBorder(BorderFactory.createEmptyBorder(10, 10, 0, 10));  // Padding around components
-        questionInput.setBounds(10, 30, 200, 200);
-        questionInput.setBackground(new Color(188,204,215));
-        questionInput.setForeground(Color.BLACK);
-//        questionInput.setBorder(new MatteBorder(0, 0, 0, 0, new Color(255, 101, 0)));
+        // Input text area styling
+        questionInput = new JTextArea(8, 23);
+        questionInput.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));  // Padding
+        questionInput.setBackground(new Color(56, 62, 80)); // Darker background for input
+        questionInput.setForeground(Color.WHITE); // White text
+        questionInput.setFont(new Font("Segoe UI", Font.PLAIN, 18));  // Font update
         questionInput.setLineWrap(true);
-        questionInput.setSelectionColor(Color.GRAY);
         questionInput.setWrapStyleWord(true);
-        questionInput.setText("How many numbers divisible by 2 , 0-100 ?");
-        questionInput.setFont(new Font("Arial", Font.PLAIN, 26));  // Set font to Arial, plain style, size 16
+        questionInput.setText("How many numbers divisible by 2, 0-100?");
 
-
-        // Set a blinking caret
-        Caret caret = questionInput.getCaret();
-        caret.setBlinkRate(500);
-
+        // Scroll Pane for the input text area
         JScrollPane scrollPane = new JScrollPane(questionInput);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
-
-        // Solve Button
+        // Solve Button with hover effect
         solveButton = new JButton("Solve");
-        solveButton.setBackground(new Color(255, 101, 0));
-        solveButton.setOpaque(true);
-        solveButton.setFont(new Font("Arial", Font.PLAIN, 20));
+        solveButton.setBackground(new Color(76, 175, 80)); // Green color for button
+        solveButton.setFont(new Font("Segoe UI", Font.PLAIN, 18));
         solveButton.setForeground(Color.WHITE);
-
-        // Action listener for solveButton
+        solveButton.setFocusPainted(false);
+        solveButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        solveButton.setOpaque(true);
         solveButton.addActionListener(e -> {
-            // Call your solving logic here with the inputText
+            // Action to solve the question
         });
 
-        // Clear Button
+        // Clear Button with hover effect
         clearButton = new JButton("Clear");
-        clearButton.setBackground(new Color(210, 220, 234));
+        clearButton.setBackground(new Color(255, 87, 34)); // Red-orange color for button
+        clearButton.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+        clearButton.setForeground(Color.WHITE);
+        clearButton.setFocusPainted(false);
+        clearButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         clearButton.setOpaque(true);
-        clearButton.setFont(new Font("Arial", Font.PLAIN, 20));
-        clearButton.setForeground(Color.BLACK);
-//        clearButton.setBorderPainted(false);
 
-
-        buttonContainer =new JPanel();
-        buttonContainer.setBackground(Color.WHITE);
-        buttonContainer.setLayout(new GridLayout(1,2));
-
+        // Button container
+        buttonContainer = new JPanel();
+        buttonContainer.setLayout(new GridLayout(1, 2, 10, 10)); // Adjusted grid layout with spacing
+        buttonContainer.setOpaque(false); // Make the container transparent
         buttonContainer.add(solveButton);
         buttonContainer.add(clearButton);
 
+        // Adding components to the panel
         questionPanel.add(scrollPane);
+        questionPanel.add(Box.createRigidArea(new Dimension(0, 10))); // Adds spacing between components
         questionPanel.add(buttonContainer);
+    }
 
-
+    public JPanel getQuestionPanel() {
+        return questionPanel;
     }
 
     public JButton getSolveButton() {
@@ -101,10 +94,6 @@ public class QuestionPanel {
 
     public void setQuestionInput(JTextArea questionInput) {
         this.questionInput = questionInput;
-    }
-
-    public JPanel getQuestionPanel() {
-        return questionPanel;
     }
 
     public void setQuestionPanel(JPanel questionPanel) {
