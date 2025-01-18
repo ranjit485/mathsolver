@@ -1,8 +1,8 @@
 package com.remo.rabbit.controller;
 
 import com.remo.rabbit.service.LocalOllamaService;
-import com.remo.rabbit.view.LeftSide;
-import com.remo.rabbit.view.RightSide;
+import com.remo.rabbit.view.QuestionPanel;
+import com.remo.rabbit.view.ResponsePannel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -18,11 +18,12 @@ public class AppController {
     private LocalOllamaService ollamaService;
 
     @Autowired
-    AppController(RightSide rightSide, LeftSide leftSide) {
+    AppController(ResponsePannel responsePannel, QuestionPanel questionPanel) {
 
-        leftSide.getSolveButton().addActionListener(e -> {
-            String userInput = leftSide.getQuestionInput().getText();
-            JTextArea responseText = rightSide.getResponseText();
+        questionPanel.getSolveButton().addActionListener(e -> {
+            String userInput = questionPanel.getQuestionInput().getText();
+            JTextArea responseText = responsePannel.getResponseText();
+            responseText.setEnabled(true);
 
             // Start the typing effect with random messages while waiting for the response
             ExecutorService executor = Executors.newSingleThreadExecutor();
@@ -40,11 +41,11 @@ public class AppController {
             }).start();
         });
 
-        leftSide.getClearButton().addActionListener(e -> {
-            JTextArea jt = leftSide.getQuestionInput();
+        questionPanel.getClearButton().addActionListener(e -> {
+            JTextArea jt = questionPanel.getQuestionInput();
             jt.setText("Ask here..");
 
-            JTextArea jn = rightSide.getResponseText();
+            JTextArea jn = responsePannel.getResponseText();
             jn.setText("");
         });
     }
@@ -84,7 +85,7 @@ public class AppController {
             sb.append(randomMessage);
 
             try {
-                Thread.sleep(150);  // Adjust typing speed here
+                Thread.sleep(500);  // Adjust typing speed here
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

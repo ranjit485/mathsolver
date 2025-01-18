@@ -31,7 +31,7 @@ public class LocalOllamaService {
         Map<String, Object> requestBody = Map.of(
                 "model", "llama3.2",
                 "stream", false,
-                "prompt", prompt
+                "prompt", "You are a math teacher,you can ask simple questions ,you can answer with ASCII based representation for math formatting ,user question is ,: "+prompt
         );
 
         // Make HTTP POST request

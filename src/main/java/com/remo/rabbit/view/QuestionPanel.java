@@ -3,38 +3,37 @@ package com.remo.rabbit.view;
 import org.springframework.stereotype.Component;
 
 import javax.swing.*;
-import javax.swing.border.MatteBorder;
 import javax.swing.text.Caret;
 import java.awt.*;
 
 @Component
-public class LeftSide {
-
+public class QuestionPanel {
     private JButton solveButton;
     private JButton clearButton;
     private JTextArea questionInput;
-    private JPanel leftPannel;
-    private JPanel creditContainer;
+    private JPanel questionPanel;
     private JPanel buttonContainer;
+    public QuestionPanel() {
 
-    public LeftSide() {
-
-        leftPannel = new JPanel();
-        leftPannel.setSize(200, 100);
-//        leftPannel.setBorder(new MatteBorder(0, 0, 0, 0, new Color(255, 101, 0)));
-        leftPannel.setBackground(new Color(14, 30, 52));
-        leftPannel.setLayout(new BoxLayout(leftPannel, BoxLayout.Y_AXIS));
+        questionPanel = new JPanel();
+        questionPanel.setSize(200, 700);
+//        questionPannel.setBorder(new MatteBorder(0, 0, 0, 0, new Color(186, 212, 248)));
+        questionPanel.setBackground(new Color(188,204,215));
+        questionPanel.setLayout(new BoxLayout(questionPanel, BoxLayout.Y_AXIS));
 //        leftPannel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));  // Padding around components
 
 
         questionInput = new JTextArea(26, 23);
+        questionInput.setBorder(BorderFactory.createEmptyBorder(10, 10, 0, 10));  // Padding around components
         questionInput.setBounds(10, 30, 200, 200);
-        questionInput.setBackground(new Color(18, 40, 64));
-        questionInput.setForeground(Color.WHITE);
+        questionInput.setBackground(new Color(188,204,215));
+        questionInput.setForeground(Color.BLACK);
 //        questionInput.setBorder(new MatteBorder(0, 0, 0, 0, new Color(255, 101, 0)));
         questionInput.setLineWrap(true);
+        questionInput.setSelectionColor(Color.GRAY);
         questionInput.setWrapStyleWord(true);
-        questionInput.setFont(new Font("Arial", Font.PLAIN, 16));  // Set font to Arial, plain style, size 16
+        questionInput.setText("How many numbers divisible by 2 , 0-100 ?");
+        questionInput.setFont(new Font("Arial", Font.PLAIN, 26));  // Set font to Arial, plain style, size 16
 
 
         // Set a blinking caret
@@ -67,22 +66,6 @@ public class LeftSide {
 //        clearButton.setBorderPainted(false);
 
 
-        // Add components to inputContainer
-        creditContainer = new JPanel();
-        creditContainer.setBackground(new Color(255, 255, 255));
-        creditContainer.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
-
-        JLabel name = new JLabel("This application developed by : 2024");
-        name.setFont(new Font("Arial", Font.BOLD, 14));
-        name.setForeground(Color.BLACK);
-
-        JLabel names = new JLabel("Rohan Gharge - Akash Jadhav - Rushi Kumhar - Abhi Jadhav");
-        names.setFont(new Font("Arial", Font.BOLD, 15));
-        names.setForeground(Color.BLACK);
-
-        creditContainer.add(name);
-        creditContainer.add(names);
-
         buttonContainer =new JPanel();
         buttonContainer.setBackground(Color.WHITE);
         buttonContainer.setLayout(new GridLayout(1,2));
@@ -90,9 +73,9 @@ public class LeftSide {
         buttonContainer.add(solveButton);
         buttonContainer.add(clearButton);
 
-        leftPannel.add(scrollPane);
-        leftPannel.add(buttonContainer);
-        leftPannel.add(creditContainer);
+        questionPanel.add(scrollPane);
+        questionPanel.add(buttonContainer);
+
 
     }
 
@@ -120,20 +103,12 @@ public class LeftSide {
         this.questionInput = questionInput;
     }
 
-    public JPanel getLeftPannel() {
-        return leftPannel;
+    public JPanel getQuestionPanel() {
+        return questionPanel;
     }
 
-    public void setLeftPannel(JPanel leftPannel) {
-        this.leftPannel = leftPannel;
-    }
-
-    public JPanel getCreditContainer() {
-        return creditContainer;
-    }
-
-    public void setCreditContainer(JPanel creditContainer) {
-        this.creditContainer = creditContainer;
+    public void setQuestionPanel(JPanel questionPanel) {
+        this.questionPanel = questionPanel;
     }
 
     public JPanel getButtonContainer() {

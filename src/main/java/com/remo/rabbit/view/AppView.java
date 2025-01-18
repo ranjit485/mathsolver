@@ -9,25 +9,25 @@ import java.awt.*;
 @Component
 public class AppView extends JFrame {
 
-    public LeftSide leftSide;
-    public  RightSide rightSide;
+    public  ResponsePannel responsePannel;
+    public QuestionPanel questionPanel;
+
    @Autowired
-    public AppView(LeftSide leftSide, RightSide rightSide) {
+    public AppView(ResponsePannel responsePannel, QuestionPanel questionPanel) {
 
        // Set up the window
-        setTitle("Math Solver");
-        setSize(950, 700);
+        setTitle("AI Math Solver");
+        setSize(950, 800);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        getContentPane().setBackground(new Color(18, 18, 18));
+        getContentPane().setBackground(new Color(255, 255, 255));
         setResizable(false);
 
         // Arrange components in a layout
-        setLayout(new GridLayout(1, 2));
+        setLayout(new GridLayout(2, 2,0,0));
 
 
-        // Add containers to the frame
-        add(leftSide.getLeftPannel());
-        add(rightSide.getRightPannel());
+        add(responsePannel.getResponsePannel());
+        add(questionPanel.getQuestionPanel());
 
     }
 
