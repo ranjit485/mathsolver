@@ -18,7 +18,7 @@ This desktop application uses **Swing** for the UI, **Spring** for backend integ
 Before you run the application, make sure you have the following installed:
 - Step 1 Download Ollama for Windows from [here](https://ollama.com/download/OllamaSetup.exe)
 - Step 2 Download Math Solver for Windows from here [Download MathSolver.exe](https://github.com/ranjit485/mathsolver/releases/download/untagged-04bc83ab9825d2720f6d/MathSolver.exe)
-
+- Step 3 Run this command to start ollama `ollama run llama3.2` (Run only once)
 ## Usage
 1. Open the application.
 2. Input a math problem (e.g., `2x + 3 = 5`).
